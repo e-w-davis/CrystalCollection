@@ -24,7 +24,7 @@ class Crystal(models.Model):
         return reverse('detail', kwargs={'crystal_id': self.id})
 
 class Cleansing(models.Model):
-    date = models.DateField()
+    date = models.DateField('cleansing date')
     method = models.CharField(
         max_length=1,
         choices=METHODS,
@@ -34,3 +34,6 @@ class Cleansing(models.Model):
 
     def __str__(self):
         return f"{self.get_method_display()} on {self.date}"
+    
+    class Meta:
+        ordering = ['-date']
