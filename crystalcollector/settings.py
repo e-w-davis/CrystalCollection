@@ -118,7 +118,10 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+LOGIN_REDIRECT_URL = '/crystals/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
+
+LOGOUT_REDIRECT_URL = '/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

@@ -66,6 +66,7 @@
                 {% csrf_token %}
                 <button type="submit" class="btn">Move</button>
             </form>
+            </div>
         </div>
         {% endfor %} {% else %}
         <h5>No Recorded Location</h5>
@@ -83,7 +84,7 @@
                             <form action="{% url 'assoc_location' crystal.id location.id %}" method="post">
                             {% csrf_token %}
                             <button type="submit" class="btn">Add</button>
-                        </form>
+                            </form>
                     </div>
                 </div>
             {% endfor %}
