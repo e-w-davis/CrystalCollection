@@ -23,7 +23,15 @@
             {% csrf_token %} {{ cleansing_form.as_p }}
             <input type="submit" class="btn" value="Add Cleasning" />
         </form>
-
+        <!-- {% if crystal.cleansed_for_the_month %}
+        <div class="card-panel teal-text center-align">
+            {{crystal.name}} has been cleansed within the past month.
+        </div>
+        {% else %}
+        <div class="card-panel red-text center-align">
+            {{crystal.name}} might need to be cleansed.
+        </div>
+        {% endif %} -->
         <table class="striped">
             <thead>
                 <tr>
@@ -42,7 +50,48 @@
         </table>
     </div>
 </div>
-
+<hr />
+<div class="row">
+    <div class="col s6">
+        <h3>{{ crystal.name }}'s Location</h3>
+        {% if crystal.location.count %} {% for location in crystal.location.all %}
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title">
+                    The crystal is on/in my {{ location.place }}
+                </span>
+            </div>
+            <div class="card-action">
+                <form action="{% url 'assoc_location_remove' crystal.id location.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn">Move</button>
+            </form>
+        </div>
+        {% endfor %} {% else %}
+        <h5>No Recorded Location</h5>
+        {% endif %}
+    </div>
+    <div class="col s6">
+        <h3>Move Your Crystal</h3>
+        {% if location.count %}
+            {% for location in location.all %}
+                <div class="card">
+                    <div class="card-content">
+                        <span>{{ location.place }}</span>
+                    </div>
+                    <div class="card-action">
+                            <form action="{% url 'assoc_location' crystal.id location.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn">Add</button>
+                        </form>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <h5>{{ crystal.name }} Has Too Many Locations And Might Get Lost!</h5>
+        {% endif %}
+    </div>
+</div>
 <script>
     var dateEl = document.getElementById('id_date');
     M.Datepicker.init(dateEl, {

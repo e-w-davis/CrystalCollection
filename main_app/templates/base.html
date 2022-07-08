@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    
+
     <title>Crystal Collector</title>
 </head>
 <body>
@@ -24,6 +24,9 @@
                     <li><a href="{% url 'about' %}">About</a></li>
                     <li><a href="{% url 'crystals_create' %}">Add a Crystal</a></li>
                     <li><a href="{% url 'index' %}">View All My Crystals</a></li>
+                    <li><a href="{% url 'locations_index' %}">View All Locations</a></li>
+                    <li><a href="{% url 'locations_create' %}">Add a Location</a></li>
+
                 </ul>
             </div>
         </nav>

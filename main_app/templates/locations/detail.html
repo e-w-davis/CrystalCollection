@@ -1,0 +1,15 @@
+{% extends 'base.html' %} {% block content%}
+<h1>Location Details</h1>
+
+<div class="card">
+    <a href="{% url 'location_detail' location.id %}">
+        <div class="card-content">
+            <span class="card-title">{{ location.place }}</span>
+        </div>
+        <div class="card-action">
+            <a href="{% url 'location_delete' location.id %}">Delete</a>
+        </div>
+    </a>
+</div>
+
+{% endblock %}
